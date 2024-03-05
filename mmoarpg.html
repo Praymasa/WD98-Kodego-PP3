@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <link rel="stylesheet" href="./style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Mansalva&family=Micro+5&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,700&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    </head>
+
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+                <div class="container-fluid">
+                    <img src="./up.png" id="logo" alt="logo">
+                    <a class="navbar-brand" href="#"><b>G<span>A</span>ME H<span>OUR</span></b></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav d-flex">
+                            <a class="nav-link" href="./index.html">Home</a>
+                            <a class="nav-link" href="./card.html">Card Game</a>
+                            <a class="nav-link" href="./fighting.html">Fighting</a>
+                            <a class="nav-link active" href="./mmoarpg.html">MMOARPG</a>
+                            <a class="nav-link" href="./shooter.html">Shooter</a>
+                            <a class="nav-link" href="./sports.html">Sports</a>
+                            <a class="nav-link" href="./strategy.html">Strategy</a>
+                            <a class="nav-link" href="./racing.html">Racing</a>
+                        </div>
+                        <form class="d-flex justify-self-end ms-auto" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <section class="mt-5 pt-5">
+            <div class="bg"></div>
+            <div class="bg bg2"></div>
+            <div class="bg bg3"></div>
+            <div class="container">
+                <div class="row"></div>
+            </div>
+        </section>
+        <section id="footer" class="bg-body-tertiary">
+            <div class="container ">
+                <div class="row pt-5">
+                    <div class="col-12 col-sm-3">
+                        <h5>Contact Us</h5>
+                        <ul class="p-0">
+                            <li class="text-start">info@gamehour.com</li>
+                            <li class="text-start">0994 891 5602</li>
+                            <i class="bi bi-meta"></i>&nbsp;<i class="bi bi-facebook"></i>&nbsp;<i
+                                class="bi bi-discord"></i>&nbsp;<i class="bi bi-twitter-x"></i>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-sm-3">
+                        <ul>
+                            <li>Developers</li>
+                            <li>Advertising</li>
+                            <li>Kids Site</li>
+                            <li>Be part of our team</li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-sm-3">
+                        <ul>
+                            <li>Blog</li>
+                            <li>Affiliates</li>
+                            <li>Buy T-shirts Designs</li>
+                            <li>Subscription</li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-sm-3">
+                        <ul>
+                            <li>Info for Parent</li>
+                            <li>Terms & Conditions</li>
+                            <li>Privacy</li>
+                            <li>Help</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="text-center text-white bg-dark">
+            <p><small>&copy; All Rights Reserve | KodeGo WD98 | PP3 | Princess Ymasa</small></p>
+        </footer>
+
+        <script src="./styleJAVA.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+            integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+            crossorigin="anonymous"></script>
+
+        <script>
+            const cardGamesContainer = document.querySelector(".row")
+
+            async function getFantasyGames() {
+                let response = await fetch("https://free-to-play-games-database.p.rapidapi.com/api/filter?tag=mmorpg",
+                    {
+                        headers: {
+                            'X-RapidAPI-Key': '8079757e21mshdaf90cddf4db60bp1a7e76jsn3b6ec35f3328',
+                            'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
+                        }
+                    })
+                const data = await response.json();
+
+
+                data.forEach((cardGames) => {
+                    let column = document.createElement("div");
+                    column.classList.add("col-12");
+                    column.classList.add("col-sm-6");
+                    column.classList.add("col-lg-3");
+                    column.classList.add("my-2");
+
+                    let card = document.createElement("div");
+                    card.classList.add("card");
+                    card.classList.add("h-100");
+
+                    let gamePoster = document.createElement("img");
+                    gamePoster.classList.add("card-img-top");
+
+                    gamePoster.src = cardGames.thumbnail;
+
+                    let cardBody = document.createElement("div");
+                    cardBody.classList.add("card-body");
+
+                    let cardTitle = document.createElement("h5");
+                    cardTitle.classList.add("card-title");
+
+                    cardTitle.innerText = cardGames.title;
+
+                    let gameGenre = document.createElement("p");
+                    gameGenre.classList.add("card-text");
+                    gameGenre.classList.add("mb-0");
+
+                    gameGenre.innerText = `Genre: ${cardGames.genre}`;
+
+                    let gamePublisher = document.createElement("p");
+                    gamePublisher.classList.add("card-text");
+                    gamePublisher.classList.add("mb-0");
+
+                    gamePublisher.innerText = `Publisher: ${cardGames.publisher}`;
+
+                    let gameRelease = document.createElement("p");
+                    gameRelease.classList.add("card-text");
+                    gameRelease.classList.add("mb-0");
+
+                    gameRelease.innerText = `Released: ${cardGames.release_date}`;
+
+                    let button = document.createElement("a");
+                    button.classList.add("btn");
+                    button.classList.add("btn-info");
+                    button.classList.add("mt-2");
+                    button.classList.add("d-block");
+                    button.classList.add("ms-auto");
+
+                    button.innerText = "Play Now!";
+
+                    cardBody.append(cardTitle, gameGenre, gamePublisher, gameRelease, button);
+                    card.append(gamePoster, cardBody);
+                    column.append(card);
+                    cardGamesContainer.append(column);
+                });
+                console.log(data);
+            }
+
+            getFantasyGames();
+        </script>
+
+    </body>
+
+</html>
